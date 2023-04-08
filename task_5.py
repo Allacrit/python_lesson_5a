@@ -16,3 +16,19 @@
 Решите через рекурсию. В задании нельзя применять циклы.
 Допускается исп-е встроенных ф-ций
 """
+
+
+def get_ascii(start, end, count=0):
+    if start > end:
+        return
+    if count == 10:
+        print()
+        count = 0
+    print(f'{start} - {chr(start)}', end=' ')
+    get_ascii(start + 1, end, count + 1)
+
+
+start = 32
+end = 127
+
+get_ascii(start, end)

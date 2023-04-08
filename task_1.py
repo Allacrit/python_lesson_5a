@@ -23,3 +23,41 @@
 Вы вместо трехзначного числа ввели строку (((. Исправьтесь
 Введите операцию (+, -, *, / или 0 для выхода):
 """
+
+
+def calculator(condition):
+    if condition:
+        try:
+            number1, operation, number2 = [
+                i for i in
+                input(
+                    'Введите математическое выражение (число пробел операнд пробел число): '
+                ).strip().split()
+            ]
+        except ValueError:
+            print('Неправильный ввод.')
+            calculator(True)
+        number1 = int(number1)
+        number2 = int(number2)
+
+        if operation == '0':
+            pass
+        elif operation == '+':
+            print(f'{number1} {operation} {number2} = {number1 + number2}')
+            calculator(True)
+        elif operation == '-':
+            print(f'{number1} {operation} {number2} = {number1 - number2}')
+            calculator(True)
+        elif operation == '*':
+            print(f'{number1} {operation} {number2} = {number1 * number2}')
+            calculator(True)
+        elif operation == '/':
+            try:
+                print(f'{number1} {operation} {number2} = {number1 / number2}')
+                calculator(True)
+            except ZeroDivisionError:
+                print('Ошибка. Деление на ноль')
+                calculator(True)
+
+
+calculator(True)

@@ -6,3 +6,29 @@
 то вывести загаданное число.
 Решите через рекурсию. В задании нельзя применять циклы.
 """
+
+
+def func(number, count=10):
+    print(f'Количество попыток: {count}')
+    if count < 0:
+        print(f"Число не отгадано. Загаданное число: {number}")
+        return number
+    user_number = int(input('Введите число: '))
+    if user_number == number:
+        print(f'^^^Ты угадал! Это число {number}!!!^^^')
+        return user_number
+    elif user_number > number:
+        print(
+            f'Твое число {user_number} больше загаданного!')
+        return func(number, count - 1)
+    else:
+        print(
+            f'Твое число {user_number} меньше загаданного!')
+        return func(number, count - 1)
+
+
+from random import randint
+
+number = randint(0, 100)
+
+func(number)
